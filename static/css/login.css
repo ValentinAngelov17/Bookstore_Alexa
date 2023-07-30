@@ -1,0 +1,247 @@
+.login-form {
+    border: 3px solid #f1f1f1;
+    width: 380px;
+    height: 520px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 20px;
+    font-family: 'Ysabeau Infant', sans-serif;
+    font-size: 28px;
+
+  }
+  nav a {
+    font-size: 28px;
+    margin-left:14px;
+    padding-left: 5px;
+    color: #f1f1f1;
+
+}
+  footer {
+    background-color: rgba(0, 0, 0, 0.5); /* Фонов цвят на футъра */
+    padding: 1px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff; /* Цвят на текста във футъра */
+    flex-shrink: 0;
+    margin-top: 22px;
+    font-family: 'Ysabeau Infant', sans-serif;
+}
+.social-icons {
+  margin-top: 10px;
+
+}
+
+.social-icon {
+  display: inline-block;
+  margin: 0 10px;
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Ysabeau Infant', sans-serif;
+}
+
+.social-icon:hover {
+  color: #cccccc;
+}
+
+  .container {
+    padding: 16px;
+    font-size: 28px;
+
+
+  }
+  .container h2 {
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 26px;
+    font-family: 'Ysabeau Infant', sans-serif;
+  }
+
+  .login-input {
+    width: 100%;
+    padding: 18px 20px;
+    margin: 14px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .login-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .login-button:hover {
+    opacity: 0.8;
+  }
+
+
+
+  .psw {
+    padding: 12px;
+    font-size: 22px;
+  }
+
+  /* Промени стиловете по желание */
+  body {
+    background-color: #f2f2f2;
+  }
+
+  h2 {
+    text-align: center;
+    color: #ffffff;
+  }
+  h1 {
+    text-align: center;
+    color: #ffffff;
+  }
+
+
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2016/12/02/14/21/background-1877877_1280.jpg');
+    /* https://cdn.pixabay.com/photo/2016/05/12/07/24/grunge-1387126_1280.jpg*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #fff; /* Цвят на текста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Сянка на текста */
+}
+.image-container {
+    flex: 0 0 50%;
+    margin-right: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    display: block;
+    margin-left: 12px;
+}
+.cart-icon {
+  margin-right: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.dropdown-btn {
+  background-color: transparent;
+  border: none;
+  color: #333333;
+  cursor: pointer;
+}
+
+.dropdown-btn i {
+  margin-left: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.ol  li {
+  text-align: center;
+}
+.dropdown-content a {
+  color: #333333;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.profile-icon {
+  color: #91cf94;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.profile-icon i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.cart-icon i {
+  font-size: 32px;
+  color: #91cf94;
+  margin-left: 6px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 300px;
+}
+
+.search-form input {
+  padding: 10px;
+  width: 200px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-form button {
+  position: relative;
+  z-index: 1;
+  padding: 9px;
+  background-color: rgb(255, 255, 255);
+  border-color: #333333;
+  color: #333333;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+
+.search-form button:hover {
+  color: #ff4081;
+}
+
+nav img {
+  max-height: 100px;
+  margin-right: 10px;
+}
+
+.text-container {
+  margin-left: 460px;
+  margin-right: 460px;
+  font-family: 'Ysabeau Infant', sans-serif;
+}
+
+.text-container h2 {
+  background-color: #de095e;
+  text-align: center;
+  font-size: 28px;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+
+}

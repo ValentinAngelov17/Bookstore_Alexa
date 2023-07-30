@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <body>
+
+    <main>
+    <h1 class="title">Добре дошли в книжарница Алекса!</h1>
+    <div>
+        <img class="knijarnica" src="{% static 'images/nashata.jpg' %}" alt="snimka_na_knijarnicata">
+        <img class="knijarnica" src="{% static 'images/3_knijarnica.jpg' %}" alt="">
+        <img class="knijarnica" src="{% static 'images/1_knijarnica.jpg' %}" alt="">
+
+    </div>
+
+    <div class="text-container-for-us">
+
+
+    <p><b>Здравейте, ние сме арт книжарница в малкото крайдунавско градче Свищов. Отворихме книжарница Алекса през
+        2020г. по време на пандемия в трудни условия, но въпреки това продължаваме да работим усилено и се развиваме.
+        Това, с което се отличаваме от другите книжарници, е че ние работим много в сферата на Арт изкуството и
+        предлагаме многобройни материали и готови наши сътворения, които може да откриете в нашия сайт, както и много
+        други канцеларски материали.</b></p>
+    <h3>Начин на поръчване:</h3>
+    <ol>
+        <li>Създаване на профил.</li>
+        <li>Добавяне на желаните продукти в количката.</li>
+        <li>Натискане на бутон 'Направи поръчка'</li>
+    </ol>
+
+    <p>След направата на поръчка, ще изпратим имейл на посочения в профила Ви. Доставката отнема от 3-5 работни дни.
+        Работим само с Еконт!</p>
+    <div id="map-container">
+    <div id="map-icon"><i class="fas fa-map-marker-alt"> ул. „Цар Освободител“ 74, 5250 Център, Свищов</i></div>
+    <div id="email-container">
+    <div id="email-icon"><i class="far fa-envelope">
+        Aleks_art@abv.bg</i></div>
+{% endblock %}

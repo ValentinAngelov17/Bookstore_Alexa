@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+        <main>
+           <div class="text-container">
+                <h1>Добре дошли в книжарница Алекса!</h1>
+               {{ request.user }}
+
+                <h2>Направи регистрация сега и получи 5% отстъпка при първа поръчка!</h2>
+
+
+            </div>
+            <div class="card-group">
+                <div class="card">
+                    <img src="{% static 'images/book-bible-page-prayer-159510.jpeg' %}" alt="Снимка 1">
+                    <div class="card-text">
+                        <h3>Хартия и хартиени материали</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'images/kanc.webp' %}" alt="Снимка 2">
+                    <div class="card-text">
+                        <h3>Офис и ученически материали</h3>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static 'images/books-bookstore-book-reading-159711.jpeg' %}" alt="Снимка 1">
+                    <div class="card-text">
+                        <h3>Книги</h3>
+                    </div>
+                </div>
+
+              <!--  <div class="card">
+                    <img src="pexels-photo-53874.webp" alt="Снимка 3">
+                    <div class="card-text">
+                        <h3>Пишещи средства</h3>
+
+                    </div>
+                </div> -->
+            </div>
+            <div class="card-group">
+
+                <div class="cards">
+                    <img src="{% static 'images/craft.jpeg' %}" alt="Снимка 2">
+                    <div class="card-text">
+                        <h3>Хоби и Арт материали</h3>
+
+                    </div>
+                </div>
+                <div class="cards">
+                    <img src="{% static 'images/gift.jpeg' %}" alt="Снимка 3">
+                    <div class="card-text">
+                        <h3>Подаръци и сувенири</h3>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+
+{% endblock %}
