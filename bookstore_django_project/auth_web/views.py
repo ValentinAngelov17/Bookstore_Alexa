@@ -1,9 +1,7 @@
 from django import forms
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.contrib.auth import forms as auth_forms
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import View
 from django.views import generic as views
 from django.contrib.auth import mixins as auth_mixins
 from django.utils.translation import gettext_lazy as _
@@ -29,10 +27,6 @@ class RegisterUserForm(auth_forms.UserCreationForm):
         fields = ('email',)
 
 
-# requirements
-
-
-
 class RegisterUserView(views.CreateView):
     template_name = 'registration.html'
     form_class = RegisterUserForm
@@ -51,9 +45,6 @@ class LoginUserView(auth_views.LoginView):
 
 class LogoutUserView(auth_views.LogoutView):
     pass
-
-
-UserModel = get_user_model()
 
 
 class UserDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
