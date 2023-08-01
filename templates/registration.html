@@ -1,86 +1,22 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+{% block page_content %}
     <link rel="stylesheet" href="{% static 'css/registration.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,100&display=swap" rel="stylesheet">
-</head>
-<body>
-<header>
-    <nav>
-        <img src="{% static 'images/knj_alexa.png' %}" alt="Снимка">
-        <a href="{% url 'index' %}">НАЧАЛО</a>
-        <a href="{% url 'about' %}">ЗА НАС</a>
-        <form class="search-form" action="/search" method="GET">
-            <div class="dropdown">
-                <button class="dropdown-btn">Артикули <i class="fas fa-chevron-down"></i></button>
-                <div class="dropdown-content">
-                    <a href="#">Хартия и хартиени изделия</a>
-                    <a href="#">Офис и ученически материали</a>
-                    <a href="#">Книги</a>
-                    <a href="#">Хоби и Арт материали</a>
-                    <a href="#">Подаръци и сувенири</a>
-                </div>
-            </div>
-
-            <label>
-                <input type="text" name="query" placeholder="Търси...">
-            </label>
-            <button type="submit"><i class="fas fa-search"></i></button>
-            <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
-            <a href="{% url 'login' %}" class="profile-icon"><i class="fas fa-user"></i></a>
-
-        </form>
-    </nav>
-</header>
-<main>
-    <div class="text-container">
-        <h1>Добре дошли в книжарница Алекса!</h1>
-        <h2>Направи регистрация сега и получи 5% отстъпка при първа поръчка!</h2>
-    </div>
-    <form class="registration-form" action="{% url 'register' %}" method="post">
-        <h2>Регистрация</h2>
-        {{ form.as_p }}
-        <div class="container">
-            <!--
-            <label for="username" class="registration-label"><b>Потребителско име</b></label>
-            <label>
-                <input type="text" placeholder="Въведете потребителско име" name="username" required
-                       class="registration-input">
-            </label>
-
-            <label for="password" class="registration-label"><b>Парола</b></label>
-            <label>
-                <input type="password" placeholder="Въведете парола" name="password" required class="registration-input">
-            </label>
-
-            <label for="email" class="registration-label"><b>Email</b></label>
-            <label>
-                <input type="email" placeholder="Въведете email адрес" name="email" required class="registration-input">
-            </label>
--->
-            <button type="submit" class="registration-button">Регистрация</button>
+    <main>
+        <div class="text-container">
+            <h1>Добре дошли в книжарница Алекса!</h1>
+            <h2>Направи регистрация сега и получи 5% отстъпка при първа поръчка!</h2>
         </div>
-        {% csrf_token %}
-    </form>
-</main>
+        <form class="registration-form" action="{% url 'register' %}" method="post">
+            <h2>Регистрация</h2>
+            {{ form.as_p }}
+            <div class="container">
 
-<footer>
-    <p>Книжарница Алекса &copy; 2023. Всички права запазени.</p>
-    <div class="social-icons">
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-        <a class="social-icon"><i class="fas fa-phone"> 0886973785</i></a>
-    </div>
-</footer>
-
-
-</body>
-</html>
+                <button type="submit" class="registration-button">Регистрация</button>
+            </div>
+            {% csrf_token %}
+        </form>
+    </main>
+{% endblock %}
