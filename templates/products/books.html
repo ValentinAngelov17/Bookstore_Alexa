@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/books.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <h2 class="knigi">Книги</h2>
+    <div class="book-container">
+        {% for book in books %}
+            <div class="book">
+                <h3>{{ book.title }}</h3>
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover"
+                         style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
+                {% else %}
+                    <p>No cover image available</p>
+                {% endif %}
+                <p><strong>Автор:</strong> {{ book.author }}</p>
+                <p><strong>Страници:</strong> {{ book.pages }}</p>
+                <p><strong>Цена:</strong> {{ book.price }} лв</p>
+                <button type="submit" class="registration-button">Добави в количката</button>
+
+            </div>
+            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                </div>
+                <div class="book-container">
+            {% endif %}
+        {% endfor %}
+        </div>
+    <div class="pagination">
+        {% if is_paginated %}
+            <span class="page-links">
+      {% if books.has_previous %}
+          <a href="?page=1">First</a>
+          <a href="?page={{ books.previous_page_number }}">Previous</a>
+      {% endif %}
+                <span class="page-current">
+        Page {{ books.number }} of {{ books.paginator.num_pages }}.
+      </span>
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}">Next</a>
+                    <a href="?page={{ books.paginator.num_pages }}">Last</a>
+                {% endif %}
+    </span>
+        {% endif %}
+    </div>
+{% endblock %}

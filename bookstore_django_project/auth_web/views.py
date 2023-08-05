@@ -24,7 +24,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 
     class Meta(auth_forms.UserCreationForm.Meta):
         model = UserModel
-        fields = ('email',)
+        fields = ('email', 'first_name', 'last_name')
 
 
 class RegisterUserView(views.CreateView):
@@ -50,3 +50,4 @@ class LogoutUserView(auth_views.LogoutView):
 class UserDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     model = UserModel
     template_name = 'user_details.html'
+

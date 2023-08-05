@@ -3,6 +3,7 @@ from django.urls import path
 
 from bookstore_django_project.auth_web.views import LoginUserView, RegisterUserView, LogoutUserView, UserDetailsView
 
+
 urlpatterns = [
     path('login/', LoginUserView.as_view(), name='login'),
     path('register/', RegisterUserView.as_view(), name='register'),

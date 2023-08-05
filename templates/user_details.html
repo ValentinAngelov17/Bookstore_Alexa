@@ -8,12 +8,23 @@
 
 
     <form class="registration-form" action="{% url 'logout' %}" method="post">
-            <h2>Profile details, {{ user.email }}</h2>
+        <div class="container">
             {{ form.as_p }}
-            <div class="container">
+            <h2>{{ user.email }}</h2>
+            <h3>First name: {{ user.first_name }}</h3>
+            <h3>Last name: {{ user.last_name }}</h3>
 
+
+            <div class="container">
+                <button type="submit" class="registration-button">Моите поръчки</button>
+            </div>
+
+
+            <div class="container">
                 <button type="submit" class="registration-button">Изход</button>
             </div>
+
             {% csrf_token %}
-        </form>
+        </div>
+    </form>
 {% endblock %}
