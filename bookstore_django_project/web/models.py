@@ -14,3 +14,15 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Paper(models.Model):
+    title = models.CharField(max_length=100)
+    format = models.CharField(max_length=3)
+    weight = models.PositiveIntegerField()
+    number_of_sheets = models.PositiveIntegerField()
+    cover_image = models.ImageField(upload_to='papers_cover/', blank=True, null=True)
+    price = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.title

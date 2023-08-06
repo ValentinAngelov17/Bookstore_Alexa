@@ -3,12 +3,12 @@
 
 {% block page_content %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/books.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
-    <h2 class="knigi">Книги</h2>
-    <div class="book-container">
+    <h2 class="products-title">Книги</h2>
+    <div class="product-container">
         {% for book in books %}
-            <div class="book">
+            <div class="product">
                 <h3>{{ book.title }}</h3>
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover"
@@ -19,12 +19,12 @@
                 <p><strong>Автор:</strong> {{ book.author }}</p>
                 <p><strong>Страници:</strong> {{ book.pages }}</p>
                 <p><strong>Цена:</strong> {{ book.price }} лв</p>
-                <button type="submit" class="registration-button">Добави в количката</button>
+                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
 
             </div>
             {% if forloop.counter|divisibleby:4 and not forloop.last %}
                 </div>
-                <div class="book-container">
+                <div class="product-container">
             {% endif %}
         {% endfor %}
         </div>
@@ -44,5 +44,6 @@
                 {% endif %}
     </span>
         {% endif %}
+
     </div>
 {% endblock %}

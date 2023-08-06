@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import View
 
 from django.views.generic import ListView
-from .models import Book
+from .models import Book, Paper
 
 
 class IndexView(View):
@@ -16,9 +16,16 @@ class AboutView(View):
         return render(request, 'about.html')
 
 
-class PaperView(View):
-    def get(self, request):
-        return render(request, 'products/paper.html')
+class PaperView(ListView):
+    model = Paper
+    template_name = 'products/paper.html'
+    context_object_name = 'papers'
+    paginate_by = 8
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
+        return context
 
 
 class OfficeProductsView(View):

@@ -1,10 +1,10 @@
-.book-container {
+.product-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.book {
+.product {
   width: calc(20% - 20px); /* 4 books per row with some spacing */
   margin-bottom: 20px;
   padding: 10px;
@@ -15,7 +15,7 @@
   text-align: center;
 }
 
-.registration-button {
+.shopping-cart-add-button {
     background-color: #4CAF50;
     color: white;
     padding: 20px 20px;
@@ -25,7 +25,7 @@
     width: 80%;
   }
 
-  .registration-button:hover {
+  .shopping-cart-add-button:hover {
     opacity: 0.8;
   }
 
@@ -49,18 +49,18 @@
 
 
 
-.book-container {
+.product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 
-.book h3 {
+.product h3 {
   margin-top: 0;
 }
 
-.knigi {
+.products-title {
   text-align: center;
 }
 

@@ -214,7 +214,7 @@ h2 {
     box-sizing: border-box;
   }
 
-  .registration-button {
+  .shopping-cart-add-button {
     background-color: #4CAF50;
     color: white;
     padding: 20px 20px;
@@ -224,7 +224,7 @@ h2 {
     width: 100%;
   }
 
-  .registration-button:hover {
+  .shopping-cart-add-button:hover {
     opacity: 0.8;
   }
 
