@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block page_content %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <h2 class="products-title">Офис и ученически материали</h2>
+    <div class="product-container">
+        {% for office in office_supplies %}
+            <div class="product">
+                <h3>{{ office.name }}</h3>
+                {% if office.cover_image %}
+                    <img src="{{ office.cover_image.url }}" alt="{{ office.title }} Cover"
+                         style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
+                {% else %}
+                    <p>No cover image available</p>
+                {% endif %}
+                <p><strong>Категория: </strong> {{ office.get_supplies_display }}</p>
+                <p><strong>Цена:</strong> {{ office.price }} лв</p>
+                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+
+            </div>
+            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                </div>
+                <div class="product-container">
+            {% endif %}
+        {% endfor %}
+        </div>
+    <div class="pagination">
+        {% if is_paginated %}
+            <span class="page-links">
+      {% if paper.has_previous %}
+          <a href="?page=1">First</a>
+          <a href="?page={{ office.previous_page_number }}">Previous</a>
+      {% endif %}
+                <span class="page-current">
+        Page {{ office.number }} of {{ office.paginator.num_pages }}.
+      </span>
+                {% if office.has_next %}
+                    <a href="?page={{ office.next_page_number }}">Next</a>
+                    <a href="?page={{ office.paginator.num_pages }}">Last</a>
+                {% endif %}
+    </span>
+        {% endif %}
+
+    </div>
+{% endblock %}
