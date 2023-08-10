@@ -9,18 +9,24 @@
     <div class="product-container">
         {% for hobby_art in hobby_arts %}
             <div class="product">
-                <h3>{{ hobby_art.name }}</h3>
-                {% if hobby_art.cover_image %}
-                    <img src="{{ hobby_art.cover_image.url }}" alt="{{ hobby_art.title }} Cover"
-                         style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
-                {% else %}
-                    <p>No cover image available</p>
-                {% endif %}
-                <p><strong>Категория: </strong> {{ hobby_art.get_category_display }}</p>
-                <p><strong>Производител:</strong> {{ hobby_art.author }} </p>
-                <p><strong>Цена:</strong> {{ hobby_art.price }} лв</p>
-                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
-
+                <form method="post" action="{% url 'add shopping cart' %}">
+                    <h3>{{ hobby_art.name }}</h3>
+                    {% if hobby_art.cover_image %}
+                        <img src="{{ hobby_art.cover_image.url }}" alt="{{ hobby_art.title }} Cover"
+                             style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
+                    {% else %}
+                        <p>No cover image available</p>
+                    {% endif %}
+                    <p><strong>Категория: </strong> {{ hobby_art.get_category_display }}</p>
+                    <p><strong>Производител:</strong> {{ hobby_art.author }} </p>
+                    <p><strong>Цена:</strong> {{ hobby_art.price }} лв</p>
+                    <label for="quantity{{ hobby_art.id }}">Количество:</label>
+                    <input type="number" id="{{ hobby_art.pk }}" name="quantity" value="1" min="1">
+                    <input type="hidden" name="product_model" value="HobbyArt">
+                    <input type="hidden" name="product_id" value="{{ hobby_art.pk }}">
+                    <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+                    {% csrf_token %}
+                </form>
             </div>
             {% if forloop.counter|divisibleby:4 and not forloop.last %}
                 </div>

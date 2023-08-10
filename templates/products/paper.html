@@ -9,6 +9,7 @@
     <div class="product-container">
         {% for paper in papers %}
             <div class="product">
+            <form method="post" action="{% url 'add shopping cart' %}">
                 <h3>{{ paper.title }}</h3>
                 {% if paper.cover_image %}
                     <img src="{{ paper.cover_image.url }}" alt="{{ paper.title }} Cover"
@@ -20,7 +21,13 @@
                 <p><strong>Грамаж:</strong> {{ paper.weight }} гр/м2</p>
                 <p><strong>Брой листи в пакет:</strong> {{ paper.number_of_sheets }}</p>
                 <p><strong>Цена:</strong> {{ paper.price }} лв</p>
+                <label for="quantity{{ paper.id }}">Количество:</label>
+                <input type="number" id="{{ paper.pk }}" name="quantity" value="1" min="1">
+                <input type="hidden" name="product_model" value="Paper">
+                <input type="hidden" name="product_id" value="{{ paper.pk }}">
                 <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+                {% csrf_token %}
+            </form>
 
             </div>
             {% if forloop.counter|divisibleby:4 and not forloop.last %}

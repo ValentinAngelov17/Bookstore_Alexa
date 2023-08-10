@@ -9,17 +9,23 @@
     <div class="product-container">
         {% for office in office_supplies %}
             <div class="product">
-                <h3>{{ office.name }}</h3>
-                {% if office.cover_image %}
-                    <img src="{{ office.cover_image.url }}" alt="{{ office.title }} Cover"
-                         style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
-                {% else %}
-                    <p>No cover image available</p>
-                {% endif %}
-                <p><strong>Категория: </strong> {{ office.get_supplies_display }}</p>
-                <p><strong>Цена:</strong> {{ office.price }} лв</p>
-                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
-
+                <form method="post" action="{% url 'add shopping cart' %}">
+                    <h3>{{ office.title }}</h3>
+                    {% if office.cover_image %}
+                        <img src="{{ office.cover_image.url }}" alt="{{ office.title }} Cover"
+                             style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
+                    {% else %}
+                        <p>No cover image available</p>
+                    {% endif %}
+                    <p><strong>Категория: </strong> {{ office.get_supplies_display }}</p>
+                    <p><strong>Цена:</strong> {{ office.price }} лв</p>
+                    <label for="quantity{{ office.id }}">Количество:</label>
+                    <input type="number" id="{{ office.pk }}" name="quantity" value="1" min="1">
+                    <input type="hidden" name="product_model" value="OfficeSupplies">
+                    <input type="hidden" name="product_id" value="{{ office.pk }}">
+                    <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+                {% csrf_token %}
+                </form>
             </div>
             {% if forloop.counter|divisibleby:4 and not forloop.last %}
                 </div>

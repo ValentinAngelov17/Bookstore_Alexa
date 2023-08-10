@@ -11,8 +11,10 @@
         <div class="container">
             {{ form.as_p }}
             <h2>{{ user.email }}</h2>
+            {% if user.first_name and user.last_name %}
             <h3>First name: {{ user.first_name }}</h3>
             <h3>Last name: {{ user.last_name }}</h3>
+            {% endif %}
 
 
             <div class="container">

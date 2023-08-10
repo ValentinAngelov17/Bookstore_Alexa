@@ -3,7 +3,7 @@ body {
     /* https://cdn.pixabay.com/photo/2016/05/12/07/24/grunge-1387126_1280.jpg*/
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+
     color: #fff; /* Цвят на текста */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Сянка на текста */
     display: flex;

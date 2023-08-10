@@ -9,17 +9,23 @@
     <div class="product-container">
         {% for gift in gifts %}
             <div class="product">
-                <h3>{{ gift.name }}</h3>
-                {% if gift.cover_image %}
-                    <img src="{{ gift.cover_image.url }}" alt="{{ gift.title }} Cover"
-                         style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
-                {% else %}
-                    <p>No cover image available</p>
-                {% endif %}
-                <p><strong>Категория: </strong> {{ gift.get_category_display }}</p>
-                <p><strong>Цена:</strong> {{ gift.price }} лв</p>
-                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
-
+                <form method="post" action="{% url 'add shopping cart' %}">
+                    <h3>{{ gift.title }}</h3>
+                    {% if gift.cover_image %}
+                        <img src="{{ gift.cover_image.url }}" alt="{{ gift.title }} Cover"
+                             style="width: 150px; height: 200px; object-fit: cover; margin-bottom: 10px;">
+                    {% else %}
+                        <p>No cover image available</p>
+                    {% endif %}
+                    <p><strong>Категория: </strong> {{ gift.get_category_display }}</p>
+                    <p><strong>Цена:</strong> {{ gift.price }} лв</p>
+                    <label for="{{ gift.pk }}">Количество:</label>
+                    <input type="number" id="{{ gift.pk }}" name="quantity" value="1" min="1">
+                    <input type="hidden" name="product_model" value="Gifts">
+                    <input type="hidden" name="product_id" value="{{ gift.pk }}">
+                    <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+                    {% csrf_token %}
+                </form>
             </div>
             {% if forloop.counter|divisibleby:4 and not forloop.last %}
                 </div>

@@ -3,12 +3,15 @@
 
 {% block page_content %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <h2 class="products-title">Книги</h2>
     <div class="product-container">
+
+        {% csrf_token %}
         {% for book in books %}
             <div class="product">
+            <form method="post" action="{% url 'add shopping cart' %}">
                 <h3>{{ book.title }}</h3>
                 {% if book.cover_image %}
                     <img src="{{ book.cover_image.url }}" alt="{{ book.title }} Cover"
@@ -19,15 +22,22 @@
                 <p><strong>Автор:</strong> {{ book.author }}</p>
                 <p><strong>Страници:</strong> {{ book.pages }}</p>
                 <p><strong>Цена:</strong> {{ book.price }} лв</p>
-                <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
 
+                    {% csrf_token %}
+                    <label for="quantity{{ book.id }}">Количество:</label>
+                    <input type="number" id="{{ book.pk }}" name="quantity" value="1" min="1">
+                    <input type="hidden" name="product_model" value="Book">
+                    <input type="hidden" name="product_id" value="{{ book.pk }}">
+                    <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
+                </form>
             </div>
-            {% if forloop.counter|divisibleby:4 and not forloop.last %}
-                </div>
-                <div class="product-container">
+            {% if forloop.counter|divisibleby:4 or forloop.last %}
+
             {% endif %}
         {% endfor %}
-        </div>
+    </div>
+
+
     <div class="pagination">
         {% if is_paginated %}
             <span class="page-links">

@@ -50,3 +50,12 @@ class HobbyArtForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['delete'] = forms.BooleanField(required=False, widget=forms.HiddenInput)
+
+class HobbyArtForm(forms.ModelForm):
+    class Meta:
+        model = HobbyArt
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['delete'] = forms.BooleanField(required=False, widget=forms.HiddenInput)
