@@ -30,28 +30,11 @@
             </form>
 
             </div>
-            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            {% if forloop.counter|divisibleby:5 and not forloop.last %}
                 </div>
                 <div class="product-container">
             {% endif %}
         {% endfor %}
         </div>
-    <div class="pagination">
-        {% if is_paginated %}
-            <span class="page-links">
-      {% if paper.has_previous %}
-          <a href="?page=1">First</a>
-          <a href="?page={{ paper.previous_page_number }}">Previous</a>
-      {% endif %}
-                <span class="page-current">
-        Page {{ paper.number }} of {{ paper.paginator.num_pages }}.
-      </span>
-                {% if paper.has_next %}
-                    <a href="?page={{ paper.next_page_number }}">Next</a>
-                    <a href="?page={{ paper.paginator.num_pages }}">Last</a>
-                {% endif %}
-    </span>
-        {% endif %}
 
-    </div>
 {% endblock %}

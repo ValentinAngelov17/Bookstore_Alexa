@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block page_content %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shopping_cart.css' %}">
+    <h2 class="products-title">Благодарим за направената от Вас поръчка!</h2>
+    <h2 style="text-align: center"><a href="{% url 'order details' order.id %}">Поръчка #{{ order.id }}</a></h2>
+    <h2 class="products-title">Ще получите имейл с потвърждение, че сме приели и обработили поръчката!</h2>
+    <div class="order-details">
+
+      <div class="order-details">
+        <table>
+            <thead>
+            <tr>
+                <th>Email</th>
+                <th>Име</th>
+                <th>Фамилия</th>
+                <th>Телефон</th>
+                <th>Адрес</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ order.email }}</td>
+                <td>{{ order.first_name }}</td>
+                <td>{{ order.last_name }}</td>
+                <td>{{ order.phone_number }}</td>
+                <td>{{ order.address }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+{% endblock %}

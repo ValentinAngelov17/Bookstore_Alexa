@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <h2 class="products-title">История на поръчки</h2>
+    <div class="order-history">
+        {% if orders %}
+            <ul>
+                {% for order in orders %}
+                    <li>
+                        <a href="{% url 'order details' order.id %}">Поръчка #{{ order.id }}</a> -
+                        Дата: {{ order.created_at|date:"d.m.Y H:i:s" }} - Обща цена: {{ order.total_price }} BGN
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Все още нямате направени поръчки.</p>
+        {% endif %}
+    </div>
+{% endblock %}

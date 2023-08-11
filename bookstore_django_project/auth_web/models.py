@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
 from django.contrib.auth import models as auth_models
+from django.contrib.auth.models import Group
 
 
 class AppUserManager(auth_models.BaseUserManager):
@@ -54,3 +55,10 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         max_length=30,
         blank=True,
     )
+
+
+class StaffGroup(Group):
+    class Meta:
+        proxy = True
+        verbose_name = 'Staff Group'
+        verbose_name_plural = 'Staff Groups'

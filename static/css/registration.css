@@ -192,11 +192,12 @@ h2 {
 .registration-form {
     border: 3px solid #f1f1f1;
     width: 380px;
-    height: 520px;
+    height: 100%;
     margin: 0 auto;
     margin-top: 60px;
     margin-bottom: 60px;
     padding: 20px;
+    text-align: center;
     font-family: 'Ysabeau Infant', sans-serif;
     font-size: 28px;
   }
@@ -237,4 +238,7 @@ h2 {
     margin-bottom: 8px;
     text-align: center;
     color: #ffffff;
+  }
+  .registration-form p{
+      font-size: 28px;
   }

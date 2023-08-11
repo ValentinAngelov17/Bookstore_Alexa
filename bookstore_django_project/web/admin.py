@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt, Cart, CartItem
+from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt, Cart, CartItem, Order
 from .forms import BookForm, PaperForm, OfficeSuppliesForm, GiftsForm, HobbyArtForm
 
 
@@ -41,3 +41,10 @@ class CartAdmin(admin.ModelAdmin):
 @admin.register(CartItem)
 class CartItemAdmin(admin.ModelAdmin):
     list_display = ('cart', 'product_model')
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'email', 'first_name', 'last_name', 'phone_number', 'address')
+    list_filter = ('user', 'created_at')  # Make sure 'created_at' field exists in your Order model
+    search_fields = ('user__email', 'email', 'first_name', 'last_name')

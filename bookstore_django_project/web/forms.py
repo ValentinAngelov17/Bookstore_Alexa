@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt
+from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt, Order
 
 
 class BookForm(forms.ModelForm):
@@ -51,11 +51,8 @@ class HobbyArtForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['delete'] = forms.BooleanField(required=False, widget=forms.HiddenInput)
 
-class HobbyArtForm(forms.ModelForm):
-    class Meta:
-        model = HobbyArt
-        fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['delete'] = forms.BooleanField(required=False, widget=forms.HiddenInput)
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'address']

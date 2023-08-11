@@ -28,28 +28,11 @@
                     {% csrf_token %}
                 </form>
             </div>
-            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            {% if forloop.counter|divisibleby:5 and not forloop.last %}
                 </div>
                 <div class="product-container">
             {% endif %}
         {% endfor %}
         </div>
-    <div class="pagination">
-        {% if is_paginated %}
-            <span class="page-links">
-      {% if hobby_art.has_previous %}
-          <a href="?page=1">First</a>
-          <a href="?page={{ hobby_art.previous_page_number }}">Previous</a>
-      {% endif %}
-                <span class="page-current">
-        Page {{ hobby_art.number }} of {{ hobby_art.paginator.num_pages }}.
-      </span>
-                {% if office.has_next %}
-                    <a href="?page={{ hobby_art.next_page_number }}">Next</a>
-                    <a href="?page={{ hobby_art.paginator.num_pages }}">Last</a>
-                {% endif %}
-    </span>
-        {% endif %}
 
-    </div>
 {% endblock %}

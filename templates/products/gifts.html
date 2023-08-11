@@ -27,28 +27,11 @@
                     {% csrf_token %}
                 </form>
             </div>
-            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            {% if forloop.counter|divisibleby:5 and not forloop.last %}
                 </div>
                 <div class="product-container">
             {% endif %}
         {% endfor %}
         </div>
-    <div class="pagination">
-        {% if is_paginated %}
-            <span class="page-links">
-      {% if gift.has_previous %}
-          <a href="?page=1">First</a>
-          <a href="?page={{ gift.previous_page_number }}">Previous</a>
-      {% endif %}
-                <span class="page-current">
-        Page {{ gift.number }} of {{ gift.paginator.num_pages }}.
-      </span>
-                {% if office.has_next %}
-                    <a href="?page={{ gift.next_page_number }}">Next</a>
-                    <a href="?page={{ gift.paginator.num_pages }}">Last</a>
-                {% endif %}
-    </span>
-        {% endif %}
 
-    </div>
 {% endblock %}

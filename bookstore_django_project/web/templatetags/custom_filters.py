@@ -71,3 +71,8 @@ def cart_total(cart_items):
         total += float(product.price * item.quantity)
 
     return f"{total:.02f}"
+
+
+@register.filter(name='get_product')
+def get_product(cart_item):
+    return cart_item.product

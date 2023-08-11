@@ -6,7 +6,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
 from django.views.generic import ListView
-from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt, Cart, CartItem
+
+from .forms import OrderForm
+from .models import Book, Paper, OfficeSupplies, Gifts, HobbyArt, Cart, CartItem, Order
 from django.apps import apps
 
 
@@ -26,22 +28,12 @@ class PaperView(ListView):
     context_object_name = 'papers'
     paginate_by = 8
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
-        return context
-
 
 class OfficeProductsView(ListView):
     model = OfficeSupplies
     template_name = 'products/office_products.html'
     context_object_name = 'office_supplies'
     paginate_by = 8
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
-        return context
 
 
 class HobbyArtView(ListView):
@@ -50,22 +42,12 @@ class HobbyArtView(ListView):
     context_object_name = 'hobby_arts'
     paginate_by = 8
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
-        return context
-
 
 class BooksView(ListView):
     model = Book
     template_name = 'products/books.html'
     context_object_name = 'books'
-    paginate_by = 8
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
-        return context
+    paginate_by = 10
 
 
 class GiftsView(ListView):
@@ -73,11 +55,6 @@ class GiftsView(ListView):
     template_name = 'products/gifts.html'
     context_object_name = 'gifts'
     paginate_by = 8
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['is_paginated'] = context['page_obj'].paginator.num_pages > 1
-        return context
 
 
 @login_required
@@ -128,9 +105,64 @@ def shopping_cart(request):
         'cart': cart,
     }
 
-    return render(request, 'shopping_cart.html', context)
+    return render(request, 'shopping/shopping_cart.html', context)
 
 
 def remove_cart_item(request, pk):
     CartItem.objects.get(pk=pk).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def create_order(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
+
+            return redirect('order details', order_id=order.id)
+    else:
+
+        initial_data = {
+            'email': request.user.email,
+            'first_name': request.user.first_name if request.user.first_name else '',
+            'last_name': request.user.last_name if request.user.last_name else '',
+        }
+        form = OrderForm(initial=initial_data)
+
+    user = request.user
+    cart, created = Cart.objects.get_or_create(user=user)
+    cart_items = cart.cartitem_set.all()
+
+    context = {
+        'cart_items': cart_items,
+        'cart': cart,
+        'form': form,
+    }
+
+    return render(request, 'shopping/create_order.html', context)
+
+
+@login_required
+def order_details(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    context = {
+        'order': order,
+    }
+
+    return render(request, 'shopping/order_details.html', context)
+
+
+@login_required
+def order_history(request):
+    user = request.user
+    orders = Order.objects.filter(user=user).order_by('created_at')
+
+    context = {
+        'orders': orders,
+    }
+
+    return render(request, 'shopping/order_history.html', context)

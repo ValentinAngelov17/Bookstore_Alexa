@@ -31,29 +31,8 @@
                     <button type="submit" class="shopping-cart-add-button">Добави в количката</button>
                 </form>
             </div>
-            {% if forloop.counter|divisibleby:4 or forloop.last %}
 
-            {% endif %}
         {% endfor %}
     </div>
 
-
-    <div class="pagination">
-        {% if is_paginated %}
-            <span class="page-links">
-      {% if books.has_previous %}
-          <a href="?page=1">First</a>
-          <a href="?page={{ books.previous_page_number }}">Previous</a>
-      {% endif %}
-                <span class="page-current">
-        Page {{ books.number }} of {{ books.paginator.num_pages }}.
-      </span>
-                {% if books.has_next %}
-                    <a href="?page={{ books.next_page_number }}">Next</a>
-                    <a href="?page={{ books.paginator.num_pages }}">Last</a>
-                {% endif %}
-    </span>
-        {% endif %}
-
-    </div>
 {% endblock %}

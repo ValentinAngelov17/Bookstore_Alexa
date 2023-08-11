@@ -28,7 +28,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
 
 
 class RegisterUserView(views.CreateView):
-    template_name = 'registration.html'
+    template_name = 'auth/registration.html'
     form_class = RegisterUserForm
     success_url = reverse_lazy('index')
 
@@ -40,7 +40,7 @@ class RegisterUserView(views.CreateView):
 
 
 class LoginUserView(auth_views.LoginView):
-    template_name = 'login.html'
+    template_name = 'auth/login.html'
 
 
 class LogoutUserView(auth_views.LogoutView):
@@ -49,5 +49,5 @@ class LogoutUserView(auth_views.LogoutView):
 
 class UserDetailsView(auth_mixins.LoginRequiredMixin, views.DetailView):
     model = UserModel
-    template_name = 'user_details.html'
+    template_name = 'auth/user_details.html'
 
